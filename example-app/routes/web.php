@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('todos', [TodoController::class], 'index')->name('todos.index');
+Route::get('todos', function(){
+    return 'hello';
+})->name('todos.index');
 
 Route::middleware([
     'auth:sanctum',
