@@ -20,7 +20,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos/create');
     }
 
     /**
@@ -28,7 +28,11 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = new Todo();
+        $todo->user_Id = Auth::user();
+        $todo->task = $request->task;
+        $todo->save();
+        return redirect(route('todos.index'));
     }
 
     /**
